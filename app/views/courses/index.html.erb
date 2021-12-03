@@ -1,0 +1,27 @@
+<h1>課程清單</h1>
+<%= link_to "新增課程", new_course_path%>
+<table border='1'>
+  <thead>
+    <tr>
+      <td>名稱</td>
+      <td>價格</td>
+      <td>介紹</td>
+      <td>時數</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <% @courses.each do |course| %>
+  <tbody>
+    <tr>
+      <td><%= link_to course.name, course_path(course.id)%></td>
+      <td><%= course.price %></td>
+      <td><%= course.intro %></td>
+      <td><%= course.hour %></td>
+      <td>
+      <%= link_to"update",edit_course_path(course.id) %>
+      <%= link_to"delete",course_path(course.id), method:'delete' %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
